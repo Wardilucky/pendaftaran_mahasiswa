@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Mahasiswa Baru - Universitas Pamulang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 PENDAFTARAN MAHASISWA BARU</h1>
+            <p>Fakultas Ilmu Komputer - Teknik Informatika | Tanpa Database</p>
+        </div>
+
+        <!-- Informasi Aturan Kode -->
+        <div class="info-box">
+            <strong>🧾 Aturan Kode Pendaftaran:</strong> 
+            2 karakter awal = Tempat Tes (A=Gedung A, B=Gedung B, V=Viktor) + 1 karakter akhir = bulan tes (1-9)<br>
+            Format: <code>[Gedung][BulanTes]-[NoUrut]-[NilaiRata]</code> Contoh: <code>A2-101-85</code>
+        </div>
+
+        <!-- Form Input -->
+        <div class="form-grid">
+            <div class="input-group">
+                <label>KODE PENDAFTARAN * (otomatis)</label>
+                <input type="text" id="kodePendaftaran" readonly class="readonly-input">
+            </div>
+            <div class="input-group">
+                <label>NAMA PENDAFTAR</label>
+                <input type="text" id="nama" placeholder="Nama lengkap">
+            </div>
+            <div class="input-group">
+                <label>JENIS KELAMIN</label>
+                <select id="jk">
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>TELP/HP</label>
+                <input type="text" id="telp" placeholder="Nomor telepon">
+            </div>
+            <div class="input-group">
+                <label>ASAL SEKOLAH</label>
+                <input type="text" id="asalSekolah" placeholder="Nama sekolah">
+            </div>
+            <div class="input-group">
+                <label>PEKERJAAN ORANG TUA</label>
+                <input type="text" id="pekerjaanOrtu" placeholder="Pekerjaan">
+            </div>
+            <div class="input-group">
+                <label>TEMPAT TES (Gedung)</label>
+                <select id="gedung">
+                    <option value="A">A - Gedung A</option>
+                    <option value="B">B - Gedung B</option>
+                    <option value="V">V - Viktor</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>BULAN TES (1-9)</label>
+                <input type="number" id="bulanTes" min="1" max="9" value="1">
+            </div>
+            <div class="input-group">
+                <label>NILAI TES MATEMATIKA</label>
+                <input type="number" id="mat" step="0.01" min="0" max="100" value="70">
+            </div>
+            <div class="input-group">
+                <label>NILAI BAHASA INGGRIS</label>
+                <input type="number" id="inggris" step="0.01" min="0" max="100" value="70">
+            </div>
+            <div class="input-group">
+                <label>NILAI PENALARAN UMUM</label>
+                <input type="number" id="umum" step="0.01" min="0" max="100" value="70">
+            </div>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <div class="tombol-container">
+            <button id="btnTambah" class="btn-primary">➕ TAMBAH PENDAFTAR</button>
+            <button id="btnResetForm" class="btn-secondary">🗑️ BERSIHKAN FORM</button>
+            <button id="btnHapusSemua" class="btn-danger">🗑️ HAPUS SEMUA DATA</button>
+        </div>
+
+        <!-- Tabel Data Pendaftar -->
+        <h3>📋 Tabel Data Pendaftaran</h3>
+        <div class="table-wrapper">
+            <table id="tabelPendaftar">
+                <thead>
+                    <tr>
+                        <th>Kode Pendaftar</th>
+                        <th>Nama Pendaftar</th>
+                        <th>JK</th>
+                        <th>Telp</th>
+                        <th>Asal Sekolah</th>
+                        <th>Pek. Ortu</th>
+                        <th>Tempat Tes</th>
+                        <th>Bln Tes</th>
+                        <th>MAT</th>
+                        <th>INGG</th>
+                        <th>UMUM</th>
+                        <th>N. RATA</th>
+                        <th>KETERANGAN</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyPendaftar">
+                    <tr>
+                        <td colspan="13" class="empty-data">Belum ada data pendaftar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Statistik -->
+        <div class="summary">
+            <div class="summary-item">📌 Jumlah Pendaftar: <span id="totalPendaftar">0</span></div>
+            <div class="summary-item">✅ Lulus: <span id="totalLulus">0</span></div>
+            <div class="summary-item">⚠️ Cadangan: <span id="totalCadangan">0</span></div>
+            <div class="summary-item">❌ Tidak Lulus: <span id="totalTidakLulus">0</span></div>
+        </div>
+
+        <footer>
+            © UTS Pemrograman Web II - Universitas Pamulang | Rata-rata ≥70 Lulus, 60-70 Cadangan, &lt;60 Tidak Lulus
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
